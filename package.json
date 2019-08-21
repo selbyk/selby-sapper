@@ -1,0 +1,64 @@
+{
+  "name": "TODO",
+  "description": "TODO",
+  "version": "0.0.1",
+  "scripts": {
+    "commit": "npx git-cz",
+    "dev": "sapper dev",
+    "build": "sapper build",
+    "export": "sapper export",
+    "format": "prettier --write \"**/*.{js,json,mjs,ts}\" --ignore-path .gitignore",
+    "lint-staged": "lint-staged",
+    "start": "node __sapper__/build",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test": "run-p --race dev cy:run"
+  },
+  "dependencies": {
+    "compression": "^1.7.1",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@commitlint/prompt": "^8.1.0",
+    "@types/compression": "^1.0.1",
+    "@types/express": "^4.17.1",
+    "@types/node": "^12.7.2",
+    "commitizen": "^4.0.3",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.2.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "sapper": "^0.27.0",
+    "standard-version": "^7.0.0",
+    "svelte": "^3.9.0",
+    "svelte-loader": "^2.9.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.7.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/prompt"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "pretty-quick --staged",
+      "git add"
+    ]
+  }
+}

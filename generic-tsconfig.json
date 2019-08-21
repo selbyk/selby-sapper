@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./types/",
+    "noImplicitAny": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es5",
+    "allowJs": false,
+    "composite": true,
+    "declarationMap": true,
+    "sourceMap": true
+  }
+}
