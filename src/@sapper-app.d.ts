@@ -1,4 +1,4 @@
-declare module "@sapper/app" {
+declare module '@sapper/app' {
   // from sapper/runtime/src/app/types.ts
   // sapper doesn't export its types yet
   interface Redirect {
@@ -9,7 +9,7 @@ declare module "@sapper/app" {
 
   function goto(href: string, opts = { replaceState: false }): Promise<unknown>;
   function prefetch(
-    href: string
+    href: string,
   ): Promise<{ redirect?: Redirect; data?: unknown }>;
   function prefetchRoutes(pathnames: string[]): Promise<unknown>;
   function start(opts: { target: Node }): Promise<unknown>;
@@ -18,8 +18,8 @@ declare module "@sapper/app" {
   export { goto, prefetch, prefetchRoutes, start, stores };
 }
 
-declare module "@sapper/server" {
-  import { RequestHandler } from "express";
+declare module '@sapper/server' {
+  import { RequestHandler } from 'express';
 
   interface MiddlewareOptions {
     session?: (req: Express.Request, res: Express.Response) => unknown;
@@ -31,7 +31,7 @@ declare module "@sapper/server" {
   export { middleware };
 }
 
-declare module "@sapper/service-worker" {
+declare module '@sapper/service-worker' {
   const timestamp: number;
   const files: string[];
   const shell: string[];

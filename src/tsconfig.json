@@ -3,5 +3,11 @@
   "compilerOptions": {
     "lib": ["esnext", "dom"]
   },
-  "references": [{ "path": "./service-worker" }]
+  "include": ["."],
+  "exclude": ["service-worker"],
+  "references": [
+    {
+      "path": "./service-worker"
+    }
+  ]
 }

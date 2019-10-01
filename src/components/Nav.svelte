@@ -1,60 +1,91 @@
 <script>
-	export let segment;
+  export let segment;
+  let hamburgerMenuVisible = false;
+  let moreMenuVisible = false;
+
+  function toggleHamburgerMenu() {
+    hamburgerMenuVisible = !hamburgerMenuVisible;
+    console.log(`hamburgerMenuVisible: ${hamburgerMenuVisible}`);
+  }
+
+  function toggleMoreMenu() {
+    moreMenuVisible = !moreMenuVisible;
+    console.log(`moreMenuVisible: ${moreMenuVisible}`);
+  }
 </script>
 
 <style>
-	nav {
-		border-bottom: 1px solid rgba(255,62,0,0.1);
-		font-weight: 300;
-		padding: 0 1em;
-	}
-
-	ul {
-		margin: 0;
-		padding: 0;
-	}
-
-	/* clearfix */
-	ul::after {
-		content: '';
-		display: block;
-		clear: both;
-	}
-
-	li {
-		display: block;
-		float: left;
-	}
-
-	.selected {
-		position: relative;
-		display: inline-block;
-	}
-
-	.selected::after {
-		position: absolute;
-		content: '';
-		width: calc(100% - 1em);
-		height: 2px;
-		background-color: rgb(255,62,0);
-		display: block;
-		bottom: -1px;
-	}
-
-	a {
-		text-decoration: none;
-		padding: 1em 0.5em;
-		display: block;
-	}
+  .navbar-link.is-active,
+  a.navbar-item.is-active {
+    color: #08419c;
+    font-weight: 600;
+  }
 </style>
 
-<nav>
-	<ul>
-		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
-		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href={segment === undefined ? 'about' : '.'}>
+      <img src="s.png" width="28" height="28" alt="Logo, fancy S" />
+    </a>
 
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li>
-	</ul>
+    <span
+      on:click={toggleHamburgerMenu}
+      role="button"
+      class="navbar-burger burger {hamburgerMenuVisible ? 'is-active' : ''}"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="navbarBasicExample">
+      <span aria-hidden="true" />
+      <span aria-hidden="true" />
+      <span aria-hidden="true" />
+    </span>
+  </div>
+
+  <div
+    id="navbarBasicExample"
+    class="navbar-menu {hamburgerMenuVisible ? 'is-active' : ''}">
+    <div class="navbar-start" />
+
+    <div class="navbar-end">
+      <a
+        class="navbar-item {segment === undefined ? 'is-active' : ''}"
+        href=".">
+        <i class="fal fa-home" />
+        Home
+      </a>
+      <a
+        class="navbar-item {segment === 'blog' ? 'is-active' : ''}"
+        href="blog">
+        <i class="far fa-rss" />
+        Blog
+      </a>
+      <a
+        class="navbar-item {segment === 'projects' ? 'is-active' : ''}"
+        href="projects">
+        <i class="fal fa-construction" />
+        Projects
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <span class="navbar-link">More</span>
+        <div class="navbar-dropdown">
+          <a
+            class="navbar-item {segment === 'about' ? 'is-active' : ''}"
+            href="about">
+            About
+          </a>
+          <a
+            class="navbar-item {segment === 'resume' ? 'is-active' : ''}"
+            href="resume">
+            Resume
+          </a>
+          <hr class="navbar-divider" />
+          <a
+            class="navbar-item {segment === 'nowhere' ? 'is-active' : ''}"
+            href="nowhere">
+            Example
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </nav>
