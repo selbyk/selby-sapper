@@ -31,7 +31,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.1",
-    "sapper": "^0.27.0",
+    "sapper": "^0.27.11",
     "standard-version": "^7.0.0",
     "svelte": "^3.9.0",
     "svelte-loader": "^2.9.0",
