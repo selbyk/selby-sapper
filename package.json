@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
