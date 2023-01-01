@@ -34,10 +34,10 @@
     "sapper": "^0.27.0",
     "standard-version": "^7.0.0",
     "svelte": "^3.9.0",
-    "svelte-loader": "^2.9.0",
-    "ts-loader": "^6.0.4",
+    "svelte-loader": "^3.1.4",
+    "ts-loader": "^9.4.2",
     "typescript": "^3.5.3",
-    "webpack": "^4.7.0"
+    "webpack": "^5.75.0"
   },
   "commitlint": {
     "extends": [
